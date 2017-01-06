@@ -1,0 +1,123 @@
+<div class="box" data-ng-controller="PrincipalController as Principal">
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-offset-3 col-lg-offset-3 col-sm-12 col-md-6 col-lg-6">
+        <div class="box__busca">
+          <form>
+
+            <div class="input-group">
+              <input type="text" class="form-control input-lg bar_search" placeholder="Pesquisar..." data-ng-model="search_bar">
+              <span class="input-group-btn">
+                <button class="btn btn-lg btn-default btn-busca" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+              </span>
+            </div>
+
+            <div id="box-lista" class="box__busca__lista" data-ng-show="search_bar.length > 0">
+              <ul class="list-unstyled">
+                <div data-ng-repeat="lista in Principal.listas.market.company track by $index">
+                  <li info="{{lista.name}}" data-ng-repeat="name_code in lista.stock | filter:search_bar track by $index">
+                    <a data-ng-click="Principal.show_details(name_code.name)" href="">{{name_code.name}}</a>
+                  </li>
+                </div>
+              </ul>
+            </div>
+
+          </form>
+        </div> <!-- box__busca -->
+      </div>
+    </div> <!-- row -->
+  </div> <!-- container -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-3 col-lg-offset-3 col-sm-12 col-md-6 col-lg-6">
+        <div class="box__resposta">
+
+          <div class="box__resposta_combusca" data-ng-show="Principal.listaDetails">
+            <div id="box-resposta" class="animated fadeInDown">
+              <div class="box__resposta_combusca_titulo">Resultado da busca</div>
+              <ul class="list-unstyled">
+
+                <div data-ng-repeat="lista in Principal.listas.market.company track by $index">
+                  <li class="box__resposta_li" info="{{lista.name}}" data-ng-repeat="lista_inside in lista.stock | filter:search_bar track by $index">
+                    <div class="row">
+                      <div class="box__resposta_li_inside clearfix">
+                        <div class="col-sm-1 col-md-1">
+                          <div class="box__resposta_img">
+                            <img src="{{lista.logo}}">
+                          </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                          <div class="box__resposta_company">
+                            <span class="box__resposta_company--name">{{lista.name}}</span> - <span class="box__resposta_company--code">{{lista_inside.name}}</span>
+                          </div>
+                        </div>
+                        <div class="col-sm-5 col-md-5 text-right">
+                          <button id="showdetail" class="btn-showdetail text-right" data-ng-init="isCollapsed = true" data-ng-click="isCollapsed = !isCollapsed">
+                            <span data-ng-show="isCollapsed == true">Ver detalhe da ação <i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+                            <span data-ng-show="isCollapsed == false">Ocultar detalhe da ação <i class="fa fa-chevron-up" aria-hidden="true"></i></span>
+                          </button>
+                        </div>
+                      </div>
+
+                      <div uib-collapse="isCollapsed">
+                        <div class="box__resposta_vender clearfix">
+                          <div class="col-sm-4 col-md-3">
+                            <div class="box__resposta_abertura">
+                              <span>Abertura:</span><span>{{lista_inside.openingvalue}}</span>
+                            </div>
+                          </div>
+                          <div class="col-sm-4 col-md-3">
+                            <div class="box__resposta_atual">
+                              <span>Atual:</span><span>{{lista_inside.actualvalue}}</span>
+                            </div>
+                          </div>
+                          <div class="col-sm-4 col-md-6">
+                            <div class="box__resposta_btn text-right">
+                              <button class="btn-sell" data-ng-click="Principal.open()">vender</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div> <!-- row -->
+                  </li>
+                </div>
+
+              </ul>
+            </div>
+          </div>
+
+          <div id="box-sembusca" class="animated fadeIn">
+            <div class="box__resposta_sembusca">
+              <div class="box__resposta_sembusca--busca"></div>
+              <div class="box__resposta_sembusca--texto">Você ainda não realizou nenhuma busca!</div>
+            </div>
+          </div>
+
+        </div> <!-- box__resposta -->
+      </div>
+    </div> <!-- row -->
+  </div> <!-- container -->
+
+  <!-- modal -->
+  <script type="text/ng-template" id="modal-sell.html">
+    <div class="modal-body" id="modal-body">
+      <div class="modalstocks">
+        <div class="modalstocks__titulo">Tem certeza que deseja vender essa ação?</div>
+        <div class="row">
+        <div class="modalstocks__buttons">
+            <div class="col-sm-6 col-md-6 text-center">
+              <button type="button" class="modalstocks_btn" data-ng-click="Principal.cancel()">não</button>
+            </div>
+            <div class="col-sm-6 col-md-6 text-center">
+              <button type="button" class="modalstocks_btn" data-ng-click="Principal.confirm()">sim</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </script>
+
+</div>
