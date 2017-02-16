@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-  .module('stocks', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngCookies', 
+  .module('todo-list', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngCookies', 
     'ngResource', 'ngRoute', 'ui.bootstrap', 'ngNotify'])
   .config(config);
 
@@ -22,19 +22,4 @@
     });
 
   }
-
-  // angular
-  // .module('ngNotify', ['ngNotify'])
-  // .config(function(ngNotify) {
-  //   ngNotify.config({
-  //     theme: 'pure',
-  //     position: 'top',
-  //     duration: 3000,
-  //     sticky: false,
-  //     type: 'info',
-  //     button: true,
-  //     html: false
-  //   });
-  // });
-
 })();

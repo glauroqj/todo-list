@@ -1,0 +1,41 @@
+<div data-ng-controller="TaskController as Task">
+  <div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="insertlist">
+      <form>
+        <div class="input-group">
+          <span class="input-group-btn">
+            <button class="btn btn-lg btn-default btn-busca" type="submit" data-ng-click="Task.add(Task.list_bar_insert)">
+              <i class="fa fa-plus" aria-hidden="true"></i>
+            </button>
+          </span>
+          <input type="text" class="form-control input-lg bar_search" placeholder="O que precisa ser feito?" data-ng-model="Task.list_bar_insert">
+        </div>
+      </form>
+    </div> <!-- box__busca -->
+  </div>
+  <div class="col-sm-12 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8">
+    <div class="tasklist animated fadeIn">
+      <ul class="nav nav-tabs nav-justified" data-ng-init="tab = 'all'"> 
+        <li role="presentation" data-ng-class="{'active':tab === 'all'}" data-ng-click="tab = 'all'; Task.all()">
+          <a class="one" href="#">TODOS</a>
+        </li> 
+        <li role="presentation" data-ng-class="{'active':tab === 'pendent'}" data-ng-click="tab = 'pendent'; Task.pendent()">
+          <a class="second" href="#">PENDENTES</a>
+        </li> 
+        <li role="presentation" data-ng-class="{'active':tab === 'done'}" data-ng-click="tab = 'done'; Task.done()">
+          <a class="third" href="#">FEITOS</a>
+        </li>
+      </ul>
+
+      <ul id="task-info" class="list-unstyled list-info">
+        <div data-ng-repeat="todo in Task.todos" >
+          <li status="{{todo.status}}" class="animated item fadeInDown">
+            <input type="checkbox" id="{{todo.id}}" data-ng-checked="{{todo.status == true ? true : false }}" data-ng-click="Task.verify(todo.id, this)" />
+            <label for="{{todo.id}}">{{todo.task}}</label>
+            <button class="btn btn-danger btn-xs pull-right btn-remove animated fadeIn" ng-click="Task.delete(item)">x</button>
+          </li>
+        </div>
+      </ul>
+    </div> <!-- tasklist -->
+  </div>
+</div>

@@ -1,9 +1,9 @@
 {
-  "name": "stocks",
+  "name": "todo-list",
   "version": "0.0.0",
   "dependencies": {},
   "scripts": {
-    "test": "stocks"
+    "test": "todo-list"
   },
   "devDependencies": {
     "gulp": "~3.8.10",

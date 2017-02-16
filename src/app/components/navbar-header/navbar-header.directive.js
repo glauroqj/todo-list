@@ -2,7 +2,7 @@
 	'use strict';
 
 	angular
-	.module('stocks')
+	.module('todo-list')
 	.directive('navbarheader', function() {
 		return {
 			scope: true,

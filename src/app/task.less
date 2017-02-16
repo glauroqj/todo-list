@@ -1,0 +1,103 @@
+.tasklist {
+	margin-top: 45px;
+	.nav {
+		background: #c2c7d1;
+		border-radius: 10px;
+		color: #fff;
+		position: relative;
+		border-bottom: 0px !important;
+		li {
+			border-bottom: 0px !important;
+			border-right: 1px solid #84827B;
+			&:last-child {
+				border-right: none;
+			}
+			a {
+				color: #ffffff;
+				font-weight: 500;
+				font-size: 1.2em;
+				border-bottom: 0px !important;
+				&:hover, &:active, &:focus {
+					outline: none;
+					background: @principal-color-light;
+					border-color: @principal-color-light;
+				}
+			}
+		}
+		li.active {
+			a {
+				background: @principal-color;
+				border-color: @principal-color;
+				color: #ffffff;
+				font-weight: 500;
+				font-size: 1.2em;
+				border-bottom: 0px !important;
+				&:hover, &:active, &:focus {
+					outline: none;
+					color: #ffffff;
+					background: @principal-color-light;
+					border-color: @principal-color-light;
+				}
+			}
+		}
+		.one {
+			-webkit-border-top-left-radius: 10px !important;
+			-webkit-border-bottom-left-radius: 10px !important;
+			-moz-border-radius-topleft: 10px !important;
+			-moz-border-radius-bottomleft: 10px !important;
+			border-top-left-radius: 10px !important;
+			border-bottom-left-radius: 10px !important;
+		}
+		.second {
+
+		}
+		.third {
+			-webkit-border-top-right-radius: 10px;
+			-webkit-border-bottom-right-radius: 10px;
+			-moz-border-radius-topright: 10px;
+			-moz-border-radius-bottomright: 10px;
+			border-top-right-radius: 10px;
+			border-bottom-right-radius: 10px;
+		}
+	}
+	.list-info {
+		background: #ffffff;
+		padding: 40px 35px 20px;
+		margin:-20px 15px 0px;
+		border-radius: 5px;
+		border: 1px solid #cac7c8;
+		box-shadow: 0px 24px 5px #cac7c8 inset;
+		div {
+			li {
+				padding: 15px 5px;
+				border-bottom: 1px solid #ccc;
+				text-transform: uppercase;
+				color: #98a3c4;
+				font-size: 1.6em;
+				label {
+					font-weight: 300;
+				}
+				input[checked=checked]+label {
+					text-decoration: line-through;
+					color: #c2c7d4;
+				}
+			}
+			&:last-child {
+				li {
+					border-bottom: none;
+				}
+			}
+			&:hover {
+				.btn-remove {
+					display: block;
+				}
+			}
+		}
+	}
+	.btn-remove {
+		display: none;
+		border-radius: 8px 9px;
+		font-size: 0.4em;
+		margin-top: 10px;
+	}
+}
